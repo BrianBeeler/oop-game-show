@@ -56,9 +56,12 @@ class Game {
 
     removeLife( ) {
         let lifeRemoved = false;
-        document.querySelectorAll(".tries").forEach((el)=> {
-            if (!lifeRemoved && el.src === "images/liveHeart.png") {
+        document.querySelectorAll(".tries > img").forEach((el)=> {
+            console.log("tries element", el)
+            if (!lifeRemoved && el.src.includes("images/liveHeart.png")) {
+                console.log("triggered!")
                 el.src = "images/lostHeart.png";
+                lifeRemoved = true
             }
         })
         this.missed++;
@@ -79,6 +82,17 @@ class Game {
             document.querySelector("#overlay").classList.add("win");
             document.querySelector("#game-over-message").innerHTML = "Win!!"
         }
+        this.missed = 0;
+        this.phrases = this.createPhrases();
+        this.activePhrase = null;
+        document.querySelector('#phrase').innerHTML = `<ul></ul>`;
+        document.querySelectorAll(".wrong").forEach((el) => {
+            el.classList.remove("wrong");
+        })
+        document.querySelectorAll(".tries > img").forEach((el)=> { 
+            el.src = "images/liveHeart.png";
+        });
+
     }
 }
 
