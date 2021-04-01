@@ -16,7 +16,7 @@ class Phrase {
      
             that.phrase.split("").forEach((char) => {
                 if (char.match(/[a-z]/i)) {
-                    template += `<li class='hide letter`+char+`'>`+char+`</li>`
+                    template += `<li class='hide letter `+char+`'>`+char+`</li>`
                 } else {
                   template +=  `<li class="space"> </li>`
                 }
@@ -32,11 +32,14 @@ class Phrase {
     }
 
     checkLetter(letter) {
-        return letter in this.phrase;
+        console.log("is", letter,"in", this.phrase.split(""));
+        console.log(this.phrase.split("").includes(letter));
+        return this.phrase.split("").includes(letter);
     }
 
     showMatchLetter(letter) {
         document.querySelectorAll("."+letter).forEach((el)=> {
+            console.log("element to remove", el);
             el.classList.remove("hide");
         })
     }

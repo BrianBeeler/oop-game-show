@@ -21,6 +21,7 @@ document.querySelector("#btn__reset").addEventListener("click", () => {
 
 document.querySelectorAll("button.key").forEach((el) => {
     el.addEventListener('click', (e) => {
-
+        game.handleInteraction(e)
     });   
 });
+

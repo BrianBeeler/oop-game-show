@@ -203,3 +203,13 @@ button {
   color: var(--color-lose);
 }
 
+.hide.letter {
+  color: transparent;
+}
+.letter {
+  color: black;
+}
+
+#overlay.hide {
+  display: none;
+}

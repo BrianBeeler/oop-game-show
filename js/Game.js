@@ -40,13 +40,22 @@ class Game {
     }
 
     checkForWin() {
-        return document.querySelectorAll('letter').reduce((acc, curr) => {
-            return !("hide" in curr.classList || acc === false)
-        }, true)
+        let letters = document.querySelectorAll('.letter');
+        let win = true;
+
+        letters.forEach((el) => {
+            console.log(el.classList)
+            if (el.classList.contains('hide')) {
+                win = false;
+            }
+        })
+        
+        return win;
+        
     }
 
     removeLife( ) {
-        lifeRemoved = false;
+        let lifeRemoved = false;
         document.querySelectorAll(".tries").forEach((el)=> {
             if (!lifeRemoved && el.src === "images/liveHeart.png") {
                 el.src = "images/lostHeart.png";
@@ -55,7 +64,7 @@ class Game {
         this.missed++;
 
 
-        if (missed === 5) {
+        if (this.missed === 5) {
             this.gameOver()
         }
     }
