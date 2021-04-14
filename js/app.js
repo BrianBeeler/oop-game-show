@@ -8,14 +8,16 @@
 // const phrase = new Phrase('Life is like a box of chocolates');
 // console.log(`Phrase - phrase: ${phrase.phrase}`);
 
-const game = new Game();
+
 // game.phrases.forEach((phrase, index) => {
 // console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
 // });
 
 //game.getRandomPhase().addPhraseToDisplay();
+let game = new Game();;
 
 document.querySelector("#btn__reset").addEventListener("click", () => {
+    game.gameOver();
     game.startGame();
 })
 

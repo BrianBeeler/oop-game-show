@@ -23,6 +23,9 @@ class Game {
         document.querySelector("#overlay").classList.add("hide");
         this.activePhrase = this.getRandomPhase();
         this.activePhrase.addPhraseToDisplay();
+        document.querySelector("#overlay").classList.remove("win");
+        document.querySelector("#overlay").classList.remove("lose");
+
     }
     handleInteraction(event) {
         let letter = event.target.innerHTML;
@@ -30,6 +33,7 @@ class Game {
 
         if (this.activePhrase.checkLetter(letter)) {
             this.activePhrase.showMatchLetter(letter)
+            event.target.classList.add("chosen")
             if (this.checkForWin()) {
                 this.gameOver();
             }
@@ -37,6 +41,7 @@ class Game {
             event.target.classList.add("wrong")
             this.removeLife()
         }
+        event.target.disabled = true;
     }
 
     checkForWin() {
@@ -88,9 +93,17 @@ class Game {
         document.querySelector('#phrase').innerHTML = `<ul></ul>`;
         document.querySelectorAll(".wrong").forEach((el) => {
             el.classList.remove("wrong");
+            el.disabled = false;
+        })
+        document.querySelectorAll(".chosen").forEach((el) => {
+            el.classList.remove("chosen");
+            el.disabled = false;
         })
         document.querySelectorAll(".tries > img").forEach((el)=> { 
             el.src = "images/liveHeart.png";
+        });
+        document.querySelectorAll(".key").forEach((el) => {
+            el.removeAttribute('disabled');
         });
 
     }

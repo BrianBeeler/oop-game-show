@@ -22,7 +22,6 @@ class Phrase {
                 }
             });
 
-            console.log(template);
 
             let ul = document.createElement('ul');
             ul.innerHTML = template;
@@ -32,14 +31,13 @@ class Phrase {
     }
 
     checkLetter(letter) {
-        console.log("is", letter,"in", this.phrase.split(""));
-        console.log(this.phrase.split("").includes(letter));
+
         return this.phrase.split("").includes(letter);
     }
 
     showMatchLetter(letter) {
         document.querySelectorAll("."+letter).forEach((el)=> {
-            console.log("element to remove", el);
+;
             el.classList.remove("hide");
         })
     }
